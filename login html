@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="box">
+
+<h1>Login</h1>
+
+<p th:if="${lastUsername != null}">
+    Welcome back, <span th:text="${lastUsername}"></span>
+</p>
+
+<p th:text="${message}" class="message"></p>
+<p th:text="${error}" class="error"></p>
+
+<form th:action="@{/login}" method="post">
+    <label>Username:</label>
+    <input type="text" name="username" th:value="${lastUsername}">
+    <br><br>
+
+    <label>Password:</label>
+    <input type="password" name="password">
+    <br><br>
+
+    <button type="submit">Login</button>
+</form>
+
+<p>
+    Don't have an account?
+    <a th:href="@{/register}">Register here</a>
+</p>
+
+</div>
+
+</body>
+</html>
