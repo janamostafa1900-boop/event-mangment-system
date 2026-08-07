@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Events</title>
+
+    <style>
+        body {
+            font-family: Georgia, serif;
+            background-color: #1a1a1a;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .page {
+            width: 620px;
+            background-color: white;
+            margin: 0 auto;
+            padding: 25px;
+            border: 2px solid #999;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin-bottom: 45px;
+        }
+
+        h2 {
+            font-size: 36px;
+            margin-bottom: 45px;
+        }
+
+        .event-card {
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+
+        .event-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 35px;
+        }
+
+        .event-text {
+            font-size: 30px;
+            margin-bottom: 35px;
+        }
+
+        button {
+            font-size: 28px;
+            padding: 4px 18px;
+        }
+
+        a {
+            font-size: 22px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+
+   <h1>
+    Hello,
+    <span th:text="${loggedUser.username}">User</span>!
+</h1>
+   
+
+    <h2>Available Events</h2>
+
+    <p th:if="${#lists.isEmpty(events)}">No events available right now.</p>
+
+    <div class="event-card" th:each="event : ${events}">
+        <div class="event-title" th:text="${event.title}">Event Title</div>
+
+        <div class="event-text" th:text="${event.description}">Description</div>
+
+        <div class="event-text" th:text="${event.date}">Date</div>
+
+        <div class="event-text" th:text="${event.location}">Location</div>
+        
+        <form th:action="@{/register-event}" method="post">
+        
+            <input type="hidden" name="eventId" th:value="${event.id}">
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <p><a href="/user/home">Back</a></p>
+
+</div>
+
+</body>
+</html>
