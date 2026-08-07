@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My Events</title>
+
+    <style>
+        body {
+            font-family: Georgia, serif;
+            background-color: #1a1a1a;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .page {
+            width: 760px;
+            background-color: white;
+            margin: 0 auto;
+            padding: 35px;
+            border: 2px solid #999;
+        }
+
+        h1 {
+            font-size: 42px;
+        }
+
+        h2 {
+            font-size: 32px;
+        }
+
+        .event-card {
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+
+        .event-card p {
+            font-size: 24px;
+        }
+
+        a {
+            font-size: 22px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+
+    <h1>
+        Hello,
+        <span th:text="${user.username}">User</span>!
+    </h1>
+
+    <h1>My Events</h1>
+
+    <p th:if="${#lists.isEmpty(myEvents)}">You have not joined any events yet.</p>
+
+    <div class="event-card" th:each="event : ${myEvents}">
+        <h2 th:text="${event.title}">Event Title</h2>
+
+        <p>
+            <strong>Description:</strong>
+            <span th:text="${event.description}">Description</span>
+        </p>
+
+        <p>
+            <strong>Date:</strong>
+            <span th:text="${event.date}">Date</span>
+        </p>
+
+        <p>
+            <strong>Location:</strong>
+            <span th:text="${event.location}">Location</span>
+        </p>
+    </div>
+
+    <p><a href="/events">Back to Events</a></p>
+    <p><a href="/user/home">Back to User Home</a></p>
+
+</div>
+
+</body>
+</html>
