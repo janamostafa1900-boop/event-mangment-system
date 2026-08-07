@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Home</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="box">
+
+<h1>Admin Home Page</h1>
+
+<p>
+    Welcome Admin,
+    <span th:text="${user.username}"></span>
+</p>
+
+<a class="nav-link" href="/admin/add-event">Add Event</a>
+<a class="nav-link" href="/admin/events">Manage Events</a>
+<a class="nav-link" href="/logout">Logout</a>
+
+</div>
+
+</body>
+</html>
