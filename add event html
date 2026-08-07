@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Event</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="box">
+
+    <h1>Add Event</h1>
+
+    <p th:text="${error}" class="error"></p>
+
+    <form action="/admin/add-event" method="post">
+        <label>Event Title:</label>
+        <input type="text" name="title" required>
+
+        <label>Description:</label>
+        <input type="text" name="description">
+
+        <label>Date:</label>
+        <input type="date" name="date" required>
+
+        <label>Location:</label>
+        <input type="text" name="location" required>
+
+        <button type="submit">Add Event</button>
+    </form>
+
+    <p><a href="/admin/home">Back to Admin Home</a></p>
+
+</div>
+
+</body>
+</html>
