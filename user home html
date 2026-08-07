@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Home</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="box">
+
+    <h1>User Home Page</h1>
+
+    <p>
+        Welcome,
+        <span th:text="${user.username}"></span>
+    </p>
+
+    <a class="nav-link" href="/events">View Events</a>
+    <a class="nav-link" href="/my_events">My Events</a>
+    <a class="nav-link" href="/logout">Logout</a>
+
+</div>
+
+</body>
+</html>
