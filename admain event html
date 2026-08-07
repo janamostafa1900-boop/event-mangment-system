@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Manage Events</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="box wide">
+
+<h1>Manage Events</h1>
+
+<p th:if="${#lists.isEmpty(events)}">No events added yet.</p>
+
+<table border="1" th:if="${!#lists.isEmpty(events)}">
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Date</th>
+        <th>Location</th>
+        <th>Delete</th>
+    </tr>
+
+    <tr th:each="event : ${events}">
+        <td th:text="${event.title}"></td>
+        <td th:text="${event.description}"></td>
+        <td th:text="${event.date}"></td>
+        <td th:text="${event.location}"></td>
+        <td><a th:href="@{/admin/delete-event/{id}(id=${event.id})}">Delete</a></td>
+    </tr>
+</table>
+
+<p><a href="/admin/add-event">Add New Event</a></p>
+<p><a href="/admin/home">Back to Admin Home</a></p>
+
+</div>
+
+</body>
+</html>
